@@ -1,0 +1,5 @@
+version_lable: Version change
+version_text: This application have been updated. Therefore you have been signed out and should restart application.
+Restart: Restart
+client_lable: Session change
+client_text: You seems to have lost your session. Therefore you should restart and sign in again.

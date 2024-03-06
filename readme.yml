@@ -1,0 +1,43 @@
+readme:
+  name: Buto-Plugin-ThemeHeartbeat
+  description: |
+    Check every 10 minutes if theme version diff or signed user is signed out.
+  item:
+    -
+      name: Settings
+      description: |
+        Add page to theme settings.
+        ````
+        plugin_modules:
+          heartbeat:
+            plugin: theme/heartbeat
+        ````
+        Add widget to page head section.
+        ````
+        type: widget
+        data:
+          plugin: 'theme/heartbeat'
+          method: include
+        ````
+    -
+      name: Usage
+    -
+      name: Pages
+      item:
+        -
+          name: page_pull
+    -
+      name: Widgets
+      item:
+        -
+          name: widget_include
+    -
+      name: Event
+      item: {  }
+    -
+      name: Construct
+      item:
+        -
+          name: __construct
+    -
+      name: Methods
