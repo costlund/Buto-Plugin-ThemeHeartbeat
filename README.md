@@ -1,6 +1,7 @@
 # Buto-Plugin-ThemeHeartbeat
 
-<p>Check every 10 minutes if theme version diff or signed user is signed out.</p>
+<p>Check every 10 minutes if theme version diff or signed user is signed out.
+This will normaly keep users session alive.</p>
 
 <a name="key_0"></a>
 
@@ -14,7 +15,12 @@
 <pre><code>type: widget
 data:
   plugin: 'theme/heartbeat'
-  method: include</code></pre>
+  method: include
+  data:</code></pre>
+<p>Set minutes (default 10) for heartbeat (optional).
+Normaly Apache server has session timeout of 24 minutes. 
+Set a value above that (30) to not keep users session alive.</p>
+<pre><code>    minutes: 10</code></pre>
 
 <a name="key_1"></a>
 

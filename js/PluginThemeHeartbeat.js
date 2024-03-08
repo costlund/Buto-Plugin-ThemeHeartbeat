@@ -1,14 +1,15 @@
 function PluginThemeHeartbeat(){
-  this.data = {version: {current: null, new: null}, client: {current: 0, new: 0}}
+  this.data = {version: {current: null, new: null}, client: {current: 0, new: 0}, minutes: null}
   this.i18n = {};
   this.halt = false;
-  this.init = function(version, client, i18n){
+  this.init = function(version, client, i18n, minutes){
     this.i18n = i18n;
+    this.data.minutes = minutes;
     this.data.version.current = version;
     this.data.client.current = client;
     setInterval(function () {
       PluginThemeHeartbeat.pull();
-    }, 600000);
+    }, this.data.minutes*60*1000);
   }
   this.pull = function(){
     /**

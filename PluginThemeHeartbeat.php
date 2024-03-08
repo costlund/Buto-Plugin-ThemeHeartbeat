@@ -4,6 +4,16 @@ class PluginThemeHeartbeat{
     wfPlugin::includeonce('wf/yml');
   }
   public function widget_include($data){
+    $data = new PluginWfArray($data);
+    /**
+     * minutes
+     */
+    if(!$data->get('data/minutes')){
+      $data->set('data/minutes', 10);
+    }
+    if(wfUser::hasRole('webmaster')){
+      $data->set('data/minutes', 10);
+    }
     /**
      * 
      */
@@ -23,10 +33,14 @@ class PluginThemeHeartbeat{
       $client = "1";
     }
     /**
+     * minutes
+     */
+    $minutes = $data->get('data/minutes');
+    /**
      * 
      */
     $element = wfDocument::getElementFromFolder(__DIR__, __FUNCTION__.'_init');
-    $element->setByTag(array('script' => "$( document ).ready(function() { PluginThemeHeartbeat.init('$version', $client, $json_i18n);});"));
+    $element->setByTag(array('script' => "$( document ).ready(function() { PluginThemeHeartbeat.init('$version', $client, $json_i18n, $minutes);});"));
     wfDocument::renderElement($element);
   }
   public function page_pull(){
