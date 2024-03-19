@@ -1,5 +1,9 @@
-version: 1.1.0
+version: 1.1.1
 history:
+  1.1.1:
+    date: '2024-03-19'
+    title: 'Error handling'
+    description: 'Add error handling if param plugin_modules/heartbeat not in theme settings.'
   1.1.0:
     date: '2024-03-08'
     title: 'Minutes'

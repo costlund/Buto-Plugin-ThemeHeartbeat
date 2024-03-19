@@ -4,6 +4,16 @@ class PluginThemeHeartbeat{
     wfPlugin::includeonce('wf/yml');
   }
   public function widget_include($data){
+    /**
+     * is_plugin_modules
+     */
+    $in_plugin_modules = false;
+    if(wfGlobals::get('settings/plugin_modules/heartbeat/plugin')=='theme/heartbeat'){
+      $in_plugin_modules = true;
+    }
+    /**
+     * 
+     */
     $data = new PluginWfArray($data);
     /**
      * minutes
@@ -11,7 +21,7 @@ class PluginThemeHeartbeat{
     if(!$data->get('data/minutes')){
       $data->set('data/minutes', 10);
     }
-    if(wfUser::hasRole('webmaster')){
+    if(wfUser::hasRole('webmaster') && $data->get('data/minutes') > 10){
       $data->set('data/minutes', 10);
     }
     /**
@@ -40,7 +50,11 @@ class PluginThemeHeartbeat{
      * 
      */
     $element = wfDocument::getElementFromFolder(__DIR__, __FUNCTION__.'_init');
-    $element->setByTag(array('script' => "$( document ).ready(function() { PluginThemeHeartbeat.init('$version', $client, $json_i18n, $minutes);});"));
+    if($in_plugin_modules){
+      $element->setByTag(array('script' => "$( document ).ready(function() { PluginThemeHeartbeat.init('$version', $client, $json_i18n, $minutes);});"));
+    }else{
+      $element->setByTag(array('script' => "$( document ).ready(function() { PluginThemeHeartbeat.error();});"));
+    }
     wfDocument::renderElement($element);
   }
   public function page_pull(){

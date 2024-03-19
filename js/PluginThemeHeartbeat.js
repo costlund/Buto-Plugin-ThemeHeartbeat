@@ -34,5 +34,8 @@ function PluginThemeHeartbeat(){
       }
      });
   }
+  this.error = function(){
+    console.log('PluginThemeHeartbeat says: Page settings is missing!');
+  }
 }
 var PluginThemeHeartbeat = new PluginThemeHeartbeat();
