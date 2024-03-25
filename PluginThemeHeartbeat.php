@@ -61,9 +61,8 @@ class PluginThemeHeartbeat{
     $manifest = new PluginWfYml(wfGlobals::getAppDir().'/theme/[theme]/config/manifest.yml');
     $data = new PluginWfArray();
     $data->set('version/current', wfRequest::get('version'));
-    $data->set('version/new', $manifest->get('version'));
+    $data->set('version/new', (string)$manifest->get('version'));
     $data->set('client/current', wfRequest::get('client'));
-    
     $client = "0";
     if(wfUser::hasRole('client')){
       $client = "1";
@@ -72,7 +71,7 @@ class PluginThemeHeartbeat{
     /**
      * sign out
      */
-    if(wfRequest::get('version') != $manifest->get('version')){
+    if(wfRequest::get('version') && wfRequest::get('version') != $manifest->get('version')){
       session_destroy();
     }
     exit(json_encode($data->get()));
