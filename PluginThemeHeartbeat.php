@@ -24,6 +24,12 @@ class PluginThemeHeartbeat{
     if(wfUser::hasRole('webmaster') && $data->get('data/minutes') > 10){
       $data->set('data/minutes', 10);
     }
+    if(wfServer::isHost('localhost')){
+      /**
+       * If localhost always 1 minute.
+       */
+      $data->set('data/minutes', 1);
+    }
     /**
      * 
      */
