@@ -1,5 +1,9 @@
-version: 1.1.3
+version: 1.1.4
 history:
+  1.1.4:
+    date: '2024-08-23'
+    title: 'Content type'
+    description: 'Using plugin json/request to add content type application/json to request.'
   1.1.3:
     date: '2024-03-26'
     title: 'Localhost'
@@ -26,6 +30,9 @@ plugin:
     version: 1.8.1
   -
     name: i18n/translate_to_json
+    version: 1.0.0
+  -
+    name: json/request
     version: 1.0.0
 sys:
   -

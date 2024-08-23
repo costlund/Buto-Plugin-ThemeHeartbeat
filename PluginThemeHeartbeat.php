@@ -80,6 +80,11 @@ class PluginThemeHeartbeat{
     if(wfRequest::get('version') && wfRequest::get('version') != $manifest->get('version')){
       session_destroy();
     }
-    exit(json_encode($data->get()));
+    /**
+     * 
+     */
+    wfPlugin::includeonce('json/request');
+    $jsonRequest = new PluginJsonRequest();
+    $jsonRequest->output($data->get());
   }
 }
