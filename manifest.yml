@@ -1,5 +1,9 @@
-version: 1.1.4
+version: 1.1.5
 history:
+  1.1.5:
+    date: '2025-05-23'
+    title: 'Close button and backdrop'
+    description: 'Remove close button and add backdrop to modal to force user to click on button.'
   1.1.4:
     date: '2024-08-23'
     title: 'Content type'

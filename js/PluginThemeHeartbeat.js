@@ -26,11 +26,11 @@ function PluginThemeHeartbeat(){
       if(json.version.current != json.version.new){
         PluginThemeHeartbeat.halt = true;
         var content = PluginThemeHeartbeat.i18n.version_text+' <a href="/">'+PluginThemeHeartbeat.i18n.Restart+'</a>';
-        PluginWfBootstrapjs.modal({id: 'modal_plugin_theme_hearbeat', label: PluginThemeHeartbeat.i18n.version_lable, content: content});
+        PluginWfBootstrapjs.modal({id: 'modal_plugin_theme_hearbeat', label: PluginThemeHeartbeat.i18n.version_lable, content: content, btn_close: false, backdrop: true});
       }else if(json.client.current=="1" && json.client.new=="0"){
         PluginThemeHeartbeat.halt = true;
         var content = PluginThemeHeartbeat.i18n.client_text+' <a href="/">'+PluginThemeHeartbeat.i18n.Restart+'</a>';
-        PluginWfBootstrapjs.modal({id: 'modal_plugin_theme_hearbeat', label: PluginThemeHeartbeat.i18n.client_lable, content: content});
+        PluginWfBootstrapjs.modal({id: 'modal_plugin_theme_hearbeat', label: PluginThemeHeartbeat.i18n.client_lable, content: content, btn_close: false, backdrop: true});
       }
      });
   }
